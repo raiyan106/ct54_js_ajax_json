@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Ajax and Json</title>
+
+    
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <style>
+      ul, li {
+    margin:0;
+    padding:0;
+    list-style-type:none;
+    }
+
+    form ul li {
+    margin:10px 20px;
+
+}
+form ul li:last-child {
+    text-align:center;
+    margin:20px 0 25px 0;
+}
+    input {
+    padding:10px 10px;
+    border:1px solid #d5d9da;
+    border-radius:5px;
+    box-shadow: 0 0 5px #e8e9eb inset;
+    width:328px; /* 400 (#container) - 40 (li margins) -  10 (span paddings) - 20 (input paddings) - 2 (input borders) */
+    font-size:1em;
+    outline:0; /* remove webkit focus styles */
+}
+input:focus {
+    border:1px solid #b9d4e9;
+    border-top-color:#b6d5ea;
+    border-bottom-color:#b8d4ea;
+    box-shadow:0 0 5px #b9d4e9;
+}
+#pswd_info {
+    position:absolute;
+    bottom:-75px;
+    bottom: -115px\9; /* IE Specific */
+    right:55px;
+    width:250px;
+    padding:15px;
+    background:#fefefe;
+    font-size:.875em;
+    border-radius:5px;
+    box-shadow:0 1px 3px #ccc;
+    border:1px solid #ddd;
+}
+#pswd_info h4 {
+    margin:0 0 10px 0;
+    padding:0;
+    font-weight:normal;
+}
+
+#pswd_info::before {
+    content: "\25B2";
+    position:absolute;
+    top:-12px;
+    left:45%;
+    font-size:14px;
+    line-height:14px;
+    color:#ddd;
+    text-shadow:none;
+    display:block;
+}
+
+.invalid {
+    background:url(images/invalid.png) no-repeat 0 50%;
+    padding-left:22px;
+    line-height:24px;
+    color:#ec3f41;
+}
+.valid {
+    background:url(images/valid.png) no-repeat 0 50%;
+    padding-left:22px;
+    line-height:24px;
+    color:#3a7d34;
+}
+
+#pswd_info {
+    display:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+    
+  </head>
+  <body>
+
+  <!-- MAIN -->
+
+
+
+
+<!-- /Navigation -->
+
+  <div class="container">
+     <h1>Password Checker</h1>
+      <div class="api">
+        <form>
+    <ul>
+        
+        <li>
+            <label for="pswd">Password:</label>
+            <span><input id="pswd" type="password" name="pswd" /></span>
+        </li>
+        <li>
+            <button type="submit">Register</button>
+        </li>
+    </ul>
+</form>
+<div id="pswd_info">
+    <h4>Password must meet the following requirements:</h4>
+    <ul>
+        <li id="letter" class="invalid">At least <strong>one letter</strong></li>
+        <li id="capital" class="invalid">At least <strong>one capital letter</strong></li>
+        <li id="number" class="invalid">At least <strong>one number</strong></li>
+        <li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
+    </ul>
+</div>
+      </div>
+      
+    </div>
+
+</section>
+
+<!-- MAIN -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="js/jquery.min.js"></script>
+    <script type="js/app.js"></script>
+
+    <script>
+      
+       $ (function(){
+            $('#pswd_info').hide();
+              $('input[type=password]').keyup(function() {
+                  // set password variable
+                  var pswd = $(this).val();
+                  //validate the length
+                  if ( pswd.length < 8 ) {
+                      $('#length').removeClass('valid').addClass('invalid');
+                  } else {
+                      $('#length').removeClass('invalid').addClass('valid');
+                  }
+                  //validate letter
+                  if ( pswd.match(/[A-z]/) ) {
+                      $('#letter').removeClass('invalid').addClass('valid');
+                  } else {
+                      $('#letter').removeClass('valid').addClass('invalid');
+                  }
+
+                  //validate capital letter
+                  if ( pswd.match(/[A-Z]/) ) {
+                      $('#capital').removeClass('invalid').addClass('valid');
+                  } else {
+                      $('#capital').removeClass('valid').addClass('invalid');
+                  }
+
+                  //validate number
+                  if ( pswd.match(/\d/) ) {
+                      $('#number').removeClass('invalid').addClass('valid');
+                  } else {
+                      $('#number').removeClass('valid').addClass('invalid');
+                  }
+              });
+
+              $('input[type=password]').focus(function() {
+                  $('#pswd_info').show();
+              });
+
+              $('input[type=password]').blur(function() {
+                  $('#pswd_info').hide();
+              });
+       })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+    </script>
+
+
+  </body>
+</html>

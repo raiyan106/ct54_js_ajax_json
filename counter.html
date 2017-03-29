@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <title>Textarea Jquery</title>
+<!-- Latest compiled and minified CSS -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+<style type="text/css">
+  /*.form-control[disabled], */.form-control[readonly]{background: #fff;}
+</style>
+  </head>
+  <body>  
+  <section id="main">
+  <div class="container">
+    <div class="api">
+        <textarea rows="7" cols="100" class="form-control"></textarea>
+  <br>
+    <span></span>
+    </div>
+  </div>
+  </section>
+ 
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script> 
+    <script>
+      
+      $(function(){
+ 
+         
+        var Txt_remain=100;
+         $("span").html(Txt_remain + "<b> character remaining </b>");
+ 
+         $("textarea").keyup(function(){
+            var Length=$("textarea").val().length;
+            var Remain=Txt_remain - Length;
+            $("span").html(Remain + "<b> character remaining </b>");
+            if (Length >=101) {
+              $("span").html("<b> you can't type anything </b>");
+              $("span").css("color","red");
+              $("textarea").attr('readonly', 'true');
+               
+            }
+         })
+ 
+      
+        })
+       
+          
+ 
+    </script>
+
+
+  </body>
+</html>
