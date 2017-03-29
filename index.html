@@ -81,11 +81,11 @@
      $("button").click(function(){
         var movie_query = $("input").val();
         var query_val=movie_query.replace(/\x20/g,"%20");
-        GoWeather(query_val);
+        FindMovie(query_val);
      });
 
-      function GoWeather(query_val){
-        var val="http://www.omdbapi.com/?t="+query_val;
+      function FindMovie(query_val){
+        var val="https://www.omdbapi.com/?t="+query_val;
         $.ajax({
 
         url:"https://www.omdbapi.com/?t="+query_val,
