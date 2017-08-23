@@ -85,10 +85,10 @@
      });
 
       function FindMovie(query_val){
-        var val="https://www.omdbapi.com/?t="+query_val;
+        var val="https://www.omdbapi.com/?apikey=b299695b&t="+query_val;
         $.ajax({
 
-        url:"https://www.omdbapi.com/?t="+query_val,
+        url:"https://www.omdbapi.com/?apikey=b299695b&t="+query_val,
         dataType:"json",
         data:val,
         success:function(data){
